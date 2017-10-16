@@ -36,7 +36,7 @@ class Application
     # output = page.body
 
 
-    Capybara.register_driver(:poltergeist) { |app| Capybara::Poltergeist::Driver.new(app, js_errors: false, debug: false, phantomjs_options: ['--load-images=false', '--disk-cache=true'] ) }
+    Capybara.register_driver(:poltergeist) { |app| Capybara::Poltergeist::Driver.new(app, js_errors: false, debug: false, phantomjs_options: ['--load-images=true', '--disk-cache=true'] ) }
     Capybara.default_driver = :poltergeist
 
     # page = Capybara.current_session     # the object we'll interact with
@@ -96,14 +96,14 @@ class Application
     # while !page.body.include?('Next Month') do
     #   puts "waiting for Next Month"
     # end
-    Capybara.using_wait_time(30) { page.body.include?('aria-label="Next Month') }
+    Capybara.using_wait_time(30) { page.body.include?('Next Month') }
     puts "next month available"
     sleep(0.1)
     pickupDate = req.params['pickupDate']
     while !page.body.include?(pickupDate) do
     page.find('button[aria-label="Next Month"]').click
     puts "clicked next month"
-    sleep(0.1)
+    sleep(0.2)
     end
     sleep(0.1)
 

@@ -45,7 +45,7 @@ class Application
     
     # 'https://assets.adobedtm.com'
     # 'https://www.enterprise.com/etc/designs/ecom/dist/fonts/'
-    page.driver.browser.url_blacklist = ['https://google.com', 'https://www.google.com', 'https://www.googleadservices.com/', 'https://assets.adobedtm.com', 'googleads.g.doubleclick.net', 'https://www.enterprise.com/etc/designs/ecom/dist/fonts/', 'https://cdnssl.clicktale.net', 'https://static.ads-twitter.com', 'https://developers.google.com', 'https://maps.googleapis.com', 'https://www.googleadservices.com']
+    # page.driver.browser.url_blacklist = ['https://google.com', 'https://www.google.com', 'https://www.googleadservices.com/', 'https://assets.adobedtm.com', 'googleads.g.doubleclick.net', 'https://www.enterprise.com/etc/designs/ecom/dist/fonts/', 'https://cdnssl.clicktale.net', 'https://static.ads-twitter.com', 'https://developers.google.com', 'https://maps.googleapis.com', 'https://www.googleadservices.com']
     # page.driver.browser.url_whitelist = ['https://enterprise.com']
     
     url = 'https://google.com'

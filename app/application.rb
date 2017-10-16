@@ -96,7 +96,7 @@ class Application
     # while !page.body.include?('Next Month') do
     #   puts "waiting for Next Month"
     # end
-    Capybara.using_wait_time(30) { page.body.include?('Next Month') }
+    Capybara.using_wait_time(30) { page.body.include?('aria-label="Next Month') }
     puts "next month available"
     sleep(0.1)
     pickupDate = req.params['pickupDate']

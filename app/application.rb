@@ -94,10 +94,10 @@ class Application
     # end
 
     # nextMonth = false
-    while !page.body.include?('Next Month') do
-      puts "waiting for Next Month"
-      sleep(0.05)
-    end
+    # while !page.body.include?('Next Month') do
+    #   puts "waiting for Next Month"
+    #   sleep(0.05)
+    # end
     # Capybara.using_wait_time(30) { page.body.include?('Next Month') }
     puts "next month available"
     # sleep(0.2)

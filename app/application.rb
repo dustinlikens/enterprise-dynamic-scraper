@@ -49,8 +49,6 @@ class Application
     # page.driver.browser.url_blacklist = ['https://google.com', 'https://www.google.com', 'https://www.googleadservices.com/', 'https://assets.adobedtm.com', 'https://www.googleads.g.doubleclick.net', 'https://www.enterprise.com/etc/designs/ecom/dist/fonts/', 'https://cdnssl.clicktale.net', 'https://static.ads-twitter.com', 'https://developers.google.com', 'https://maps.googleapis.com', 'https://www.googleadservices.com']
     # page.driver.browser.url_whitelist = ['https://enterprise.com']
     
-    url = 'https://google.com'
-    page.visit url
 
     puts 'about to load enterprise'
     url = 'https://www.enterprise.com/en/car-rental/locations/us/ca/oceanside-32f6.html'

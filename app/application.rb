@@ -67,7 +67,7 @@ class Application
     # end
     
     puts 'waiting for pickupCalendar'
-    Capybara.using_wait_time(30) { page.body.include?('pickupCalendar') }
+    # Capybara.using_wait_time(30) { page.body.include?('pickupCalendar') }
     # while !page.body.include?('pickupCalendar') do
     # end
     puts 'pickupCalendar available'

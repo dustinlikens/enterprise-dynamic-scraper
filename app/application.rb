@@ -99,8 +99,8 @@ class Application
     #   sleep(0.05)
     # end
     # Capybara.using_wait_time(30) { page.body.include?('Next Month') }
-    puts "next month available"
-    # sleep(0.2)
+    # puts "next month available"
+    sleep(0.2)
     pickupDate = req.params['pickupDate']
     while !page.body.include?(pickupDate) do
     page.find('button[aria-label="Next Month"]').click

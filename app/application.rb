@@ -94,12 +94,13 @@ class Application
     # end
 
     # nextMonth = false
-    # while !page.body.include?('Next Month') do
-    #   puts "waiting for Next Month"
-    # end
-    Capybara.using_wait_time(30) { page.body.include?('Next Month') }
+    while !page.body.include?('Next Month') do
+      puts "waiting for Next Month"
+      sleep(0.05)
+    end
+    # Capybara.using_wait_time(30) { page.body.include?('Next Month') }
     puts "next month available"
-    sleep(0.2)
+    # sleep(0.2)
     pickupDate = req.params['pickupDate']
     while !page.body.include?(pickupDate) do
     page.find('button[aria-label="Next Month"]').click
@@ -179,7 +180,7 @@ class Application
     # page.find('div[data-reactid*=".3.0.7"]').trigger('click')
     # page.find('booking-submit').click
     page.find_by_id('continueButton').trigger('click')
-
+    puts "loading results"
     # sleep(15)
     # Capybara.using_wait_time(30) { page.body.include?('Price Details') }
     # sleep(2.5)

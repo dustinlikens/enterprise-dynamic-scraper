@@ -12,6 +12,7 @@ require 'json'
 
 class Application
   def call(env)
+    t1 = Time.now
     resp = Rack::Response.new
     req = Rack::Request.new(env)
     
@@ -45,7 +46,7 @@ class Application
     
     # 'https://assets.adobedtm.com'
     # 'https://www.enterprise.com/etc/designs/ecom/dist/fonts/'
-    # page.driver.browser.url_blacklist = ['https://google.com', 'https://www.google.com', 'https://www.googleadservices.com/', 'https://assets.adobedtm.com', 'googleads.g.doubleclick.net', 'https://www.enterprise.com/etc/designs/ecom/dist/fonts/', 'https://cdnssl.clicktale.net', 'https://static.ads-twitter.com', 'https://developers.google.com', 'https://maps.googleapis.com', 'https://www.googleadservices.com']
+    page.driver.browser.url_blacklist = ['https://google.com', 'https://www.google.com', 'https://www.googleadservices.com/', 'https://assets.adobedtm.com', 'https://www.googleads.g.doubleclick.net', 'https://www.enterprise.com/etc/designs/ecom/dist/fonts/', 'https://cdnssl.clicktale.net', 'https://static.ads-twitter.com', 'https://developers.google.com', 'https://maps.googleapis.com', 'https://www.googleadservices.com']
     # page.driver.browser.url_whitelist = ['https://enterprise.com']
     
     url = 'https://google.com'
@@ -79,7 +80,7 @@ class Application
 
 
     page.find('label[for=pickupCalendar]').click
-    sleep(0.2)
+    sleep(0.1)
 
     # while !page.body.include?('Previous Month') do
     #   puts "waiting for Previous Month"
@@ -98,12 +99,12 @@ class Application
     # end
     Capybara.using_wait_time(30) { page.body.include?('Next Month') }
     puts "next month available"
-    sleep(0.5)
+    sleep(0.1)
     pickupDate = req.params['pickupDate']
     while !page.body.include?(pickupDate) do
     page.find('button[aria-label="Next Month"]').click
     puts "clicked next month"
-    sleep(0.2)
+    sleep(0.1)
     end
     sleep(0.1)
 
@@ -130,7 +131,7 @@ class Application
     # end
     sleep(0.1)
     page.find("button[data-reactid*='#{returnDate}']").click
-    sleep(0.5)
+    sleep(0.1)
     # end
 
    # evaluate_script("page.getElementById('coupon').value = 'E999WES'")
@@ -179,11 +180,12 @@ class Application
     # page.find('booking-submit').click
     page.find_by_id('continueButton').trigger('click')
 
-    sleep(15)
-    Capybara.using_wait_time(30) { page.body.include?('Per Day') }
-    # while !page.body.include?("Per Day") do
-    #   sleep(0.1)
-    # end
+    # sleep(15)
+    # Capybara.using_wait_time(30) { page.body.include?('Price Details') }
+    # sleep(2.5)
+    while !page.body.include?("Per Day") do
+      sleep(0.1)
+    end
 
     noko = Nokogiri::HTML(page.body)
     output[req.params[discountString]] = []
@@ -206,6 +208,11 @@ class Application
     output.to_json
 
     resp.write output
+
+    t2 = Time.now
+    delta = t2 - t1
+    resp.write delta
+
     resp.finish
   end
 end

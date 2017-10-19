@@ -68,8 +68,9 @@ class Application
     
     puts 'waiting for pickupCalendar'
     # Capybara.using_wait_time(30) { page.body.include?('pickupCalendar') }
-    # while !page.body.include?('pickupCalendar') do
-    # end
+    while !page.body.include?('pickupCalendar') do
+      sleep(0.1)
+    end
     puts 'pickupCalendar available'
    #     element = page.find('input#coupon')
 

@@ -118,7 +118,7 @@ class Application
     page.find("button[data-reactid*='#{pickupDate}']").click
     # sleep(0.5)
 
-    Capybara.using_wait_time(30) { page.body.include?('dropoffCalendar') }
+    # Capybara.using_wait_time(30) { page.body.include?('dropoffCalendar') }
     # while !page.body.include?('dropoffCalendar') do
     # end
 
@@ -127,7 +127,7 @@ class Application
 
 
     returnDate = req.params['returnDate']
-    Capybara.using_wait_time(30) { page.body.include?('returnDate') }
+    # Capybara.using_wait_time(30) { page.body.include?('returnDate') }
     # while !page.body.include?(returnDate) do
     # end
     sleep(0.1)

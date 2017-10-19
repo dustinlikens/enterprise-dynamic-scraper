@@ -165,7 +165,7 @@ class Application
    # page.find('select[id="pickupTime"]').find("option[value='12:00 PM']").select_option
    # # puts page.find('label[for=pickupTime]').inspect
 
-    Capybara.using_wait_time(30) { page.body.include?('pickupTime') }
+    # Capybara.using_wait_time(30) { page.body.include?('pickupTime') }
     # while !page.body.include?('id="pickupTime"') do
     # end 
 
